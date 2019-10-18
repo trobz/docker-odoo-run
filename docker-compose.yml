@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres:11.5
+    environment:
+      - POSTGRES_DB=postgres
+      - POSTGRES_PASSWORD=odoo
+      - POSTGRES_USER=odoo
+      - PGDATA=/var/lib/postgresql/data/pgdata
+    volumes:
+      - ./odoo-db-data:/var/lib/postgresql/data/pgdata
+    container_name: o12-pg115
+    restart: always
+    
+  web:
+    image: odoo:12
+    depends_on:
+      - db
+    ports:
+      - "8069:8069/tcp"
+      - "8072:8072/tcp"
+    volumes:
+      - ./odoo-web-data:/var/lib/odoo
+      - ./odoo:/etc/odoo # Odoo config 
+      - ./addons:/mnt/extra-addons # Odoo addons
+    container_name: o12-web
+    restart: always
+    
+volumes:
+  odoo-web-data:
+  odoo-db-data:
