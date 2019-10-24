@@ -9,11 +9,11 @@ services:
       - PGDATA=/var/lib/postgresql/data/pgdata
     volumes:
       - ./odoo-db-data:/var/lib/postgresql/data/pgdata
-    container_name: o12-pg115
+    container_name: o13-pg115
     restart: always
     
   web:
-    image: odoo:12
+    image: odoo:13
     depends_on:
       - db
     ports:
@@ -23,7 +23,7 @@ services:
       - ./odoo-web-data:/var/lib/odoo
       - ./odoo:/etc/odoo # Odoo config 
       - ./addons:/mnt/extra-addons # Odoo addons
-    container_name: o12-web
+    container_name: o13-web
     restart: always
     
 volumes:
