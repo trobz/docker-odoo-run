@@ -25,7 +25,21 @@ services:
       - ./addons:/mnt/extra-addons # Odoo addons
     container_name: o13-web
     restart: always
+  pgadmin:
+    image: dpage/pgadmin4
+    container_name: pgadmin
+    ports:
+      - "127.0.0.1:8082:80"
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin
+      - PGADMIN_DEFAULT_PASSWORD=pgadmin
+
+  debug:
+    image: kozea/wdb:3.2.5
+    container_name: debug
+    ports:
+      - "127.0.0.1:1984:1984"
     
 volumes:
   odoo-web-data:
-  odoo-db-data:
+  #odoo-db-data:
