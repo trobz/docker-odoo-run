@@ -1,0 +1,8 @@
+FROM odoo:13.0
+
+MAINTAINER Trobz <contact@trobz.com>
+
+USER root
+RUN pip3 install wdb==3.2.5
+
+USER odoo

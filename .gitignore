@@ -1,2 +1,4 @@
+*.log
+odoo
 odoo-web-data
 odoo-db-data

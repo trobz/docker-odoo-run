@@ -1,0 +1,11 @@
+up:
+	docker-compose up
+
+build:
+	docker-compose build
+
+bash:
+	docker-compose exec odoo bash
+
+psql:
+	docker-compose exec odoo psql
